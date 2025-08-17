@@ -1,0 +1,35 @@
+Immunization                                               
+95% of all identified (master list) children immunized       Number of eligible children (0-23 months) accurately master listed provided with updated vaccination record.
+Catch-up Immunization         No of missed children identified in the community and endorsed for catch-up immunization.      
+Catch-up Immunization         No of Children Immunized  in the community / with BCG               
+Catch-up Immunization         No of Children Immunized in the community /with Pentavalent 
+Catch-up Immunization         No of Children Immunized  in the community /with OPV                 
+Catch-up Immunization         No of Children Immunized  in the community/with MMR   
+
+Nutrition				
+Nutritional Assessment among 0-59 months old	No. of 0-59 months old children assessed with the following nutritional status:	
+	1. Underweight			
+	2. Severely Underweight			
+	3. Stunted			
+	4. Severely Stunted			
+	5. Wasted (MAM)			
+	6. Severely Wasted (SAM)			
+Breastfeeding	No. of pregnant and lactating women counseled on breastfeeding	
+Vitamin A Supplementation	No. of children 6-59 months given Vitamin A	
+	No. of children 6-59 months old given with LNS-SQ			
+Monitoring and Referral of Moderately Acute Malnourished (MAM) and Severely Acute Malnourished (SAM) to OTC	No. of MAM and SAM children monitored and referred for appropriate intervention in OTC	
+Maternal Micronutrient Supplementation (Iron with Folic Acid or MMS)	No. of pregnant women provided with the complete dosage of iron with folic acid supplementation as soon as pregnancy is confirmed	
+Maternal Nutritional Status	Number of identified nutritionally-at-risk pregnant women	Number	All real numbers	
+Deworming	No. of 12-59 months old provided with deworming tablets.	
+
+Immunization				
+95% of all identified (master list) children immunized	Number of eligible children (0-23 months) accurately master listed provided with updated vaccination record.	
+Catch-up Immunization	No of missed children identified in the community and endorsed for catch-up immunization.	
+Catch-up Immunization	No of Children Immunized  in the community	
+	with BCG			
+Catch-up Immunization	No of Children Immunized in the community	
+	with Pentavalent 			
+Catch-up Immunization	No of Children Immunized  in the community	
+	with OPV			
+Catch-up Immunization	No of Children Immunized  in the community	
+	with MMR			

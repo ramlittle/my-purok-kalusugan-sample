@@ -41,6 +41,49 @@ $hiv=[
         "no_of_individuals_referred_for_hiv_testing" => 1,
     ],
 ];
+$maternal_health = [
+    ["maternal_health_id" => 1,
+        "no_of_pregnant_women_receiving_anc" => 2,
+        "no_of_anc_visits" => 3,
+        "no_of_births_attended_by_skilled_health_personnel" => 4,
+        "no_of_maternal_deaths" => 1,
+        "no_of_women_using_modern_contraceptive_methods" => 3
+    ],
+    ["maternal_health_id" => 2,
+        "no_of_pregnant_women_receiving_anc" => 1,
+        "no_of_anc_visits" => 1,
+        "no_of_births_attended_by_skilled_health_personnel" => 1,
+        "no_of_maternal_deaths" => 1,
+        "no_of_women_using_modern_contraceptive_methods" => 1
+    ],
+    ["maternal_health_id" => 3,
+        "no_of_pregnant_women_receiving_anc" => 2,
+        "no_of_anc_visits" => 2,
+        "no_of_births_attended_by_skilled_health_personnel" => 2,
+        "no_of_maternal_deaths" => 2,
+        "no_of_women_using_modern_contraceptive_methods" => 2
+    ]
+];
+
+$road_safety =[
+    ["road_safety_id" => 1,
+        "no_of_road_traffic_crashes" => 2,
+        "no_of_fatalities_due_to_road_traffic_crashes" => 3,
+        "no_of_injuries_due_to_road_traffic_crashes" => 4,
+        "no_of_motorcycle_riders_wearing_helmets" => 1,
+        "no_of_vehicle_occupants_wearing_seatbelts" => 3,
+        "no_of_people_educated_on_road_safety" => 5
+    ],
+    ["road_safety_id" => 2,
+        "no_of_road_traffic_crashes" => 2,
+        "no_of_fatalities_due_to_road_traffic_crashes" => 2,
+        "no_of_injuries_due_to_road_traffic_crashes" => 2,
+        "no_of_motorcycle_riders_wearing_helmets" => 2,
+        "no_of_vehicle_occupants_wearing_seatbelts" => 2,
+        "no_of_people_educated_on_road_safety" => 2
+    ],
+];
+
 
 //tb totals
 $total_no_of_acf_ecf_activities_conducted=get_total($tubercolosis,'no_of_acf_ecf_activities_conducted');
@@ -48,12 +91,22 @@ $total_no_of_presumptive_tb_cases_assessed=get_total($tubercolosis,'no_of_presum
 $total_no_of_diagnosed_tb_cases_enrolled_to_care=get_total($tubercolosis,'no_of_diagnosed_tb_cases_enrolled_to_care');
 $total_no_of_close_contacts_identified=get_total($tubercolosis,'no_of_close_contacts_identified');
 $total_no_of_eligible_contacts_provided_with_tpt=get_total($tubercolosis,'no_of_eligible_contacts_provided_with_tpt');
-
 //hiv totals
 $total_no_of_individuals_reached=get_total($hiv,'no_of_individuals_reached');
 $total_no_of_individuals_screened=get_total($hiv,'no_of_individuals_screened');
 $total_no_of_individuals_referred_for_hiv_testing=get_total($hiv,'no_of_individuals_referred_for_hiv_testing');
-
+//maternal totals
+$total_no_of_pregnant_women_receiving_anc=get_total($maternal_health,'no_of_pregnant_women_receiving_anc');
+$total_no_of_anc_visits=get_total($maternal_health,'no_of_anc_visits');
+$total_no_of_births_attended_by_skilled_health_personnel=get_total($maternal_health,'no_of_births_attended_by_skilled_health_personnel');
+$total_no_of_maternal_deaths=get_total($maternal_health,'no_of_maternal_deaths');
+$total_no_of_women_using_modern_contraceptive_methods=get_total($maternal_health,'no_of_women_using_modern_contraceptive_methods');
+//road safety totals
+$total_no_of_road_traffic_crashes=get_total($road_safety,'no_of_road_traffic_crashes');
+$total_no_of_fatalities_due_to_road_traffic_crashes=get_total($road_safety,'no_of_fatalities_due_to_road_traffic_crashes');
+$total_no_of_motorcycle_riders_wearing_helmets=get_total($road_safety,'no_of_motorcycle_riders_wearing_helmets');
+$total_no_of_vehicle_occupants_wearing_seatbelts=get_total($road_safety,'no_of_vehicle_occupants_wearing_seatbelts');
+$total_no_of_people_educated_on_road_safety=get_total($road_safety,'no_of_people_educated_on_road_safety');
 //functions here
 function get_total($table,$column){
     $total=0;
@@ -93,6 +146,8 @@ function showAppTitle()
     <title><?php echo showAppTitle(); ?></title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .main-div{
             display:flex;
@@ -129,28 +184,10 @@ function showAppTitle()
             <p class="text-muted">This is the Purok Kalusugan Dashboard that shows all numerical data for all indicators
                 applicable for the Cordillera Administrative Region.</p>
             <div class='d-flex flex-wrap main-div'>
+                <!-- Existing TB and HIV sections -->
                 <div class='border'>
                     <div style='background-color: #245501;color:white;'>
-                        <h2>Catchment Overview</h2>
-                    </div>
-                    <div class='d-flex flex-wrap justify-content-evenly'>
-                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
-                            <h2>1</h2>
-                            <strong>City/Municipality</strong>
-                        </div>
-                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
-                            <h2>1</h2>
-                            <strong>Barangay</strong>
-                        </div>
-                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
-                            <h2>1</h2>
-                            <strong>Purok</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class='border'>
-                    <div style='background-color: #245501;color:white;'>
-                        <h2>Tubercolosis Screening</h2>
+                        <h2>Tuberculosis Screening</h2>
                     </div>
                     <div class='d-flex flex-wrap justify-content-evenly'>
                         <div class='d-flex flex-column justify-content-center align-items-center w-25'>
@@ -174,6 +211,10 @@ function showAppTitle()
                             <strong>No. of Eligible contacts provided with TPT</strong>
                         </div>
                     </div>
+                    <!-- TB Pie Chart -->
+                    <div class="p-3">
+                        <canvas id="tbPieChart"></canvas>
+                    </div>
                 </div>
                 <div class='border'>
                     <div style='background-color: #245501;color:white;'>
@@ -193,14 +234,183 @@ function showAppTitle()
                             <strong>No. of Individuals referred for HIV testing</strong>
                         </div>
                     </div>
+                    <!-- HIV Bar Chart -->
+                    <div class="p-3">
+                        <canvas id="hivBarChart"></canvas>
+                    </div>
+                </div>
+                 <div class='border'>
+                    <div style='background-color: #245501;color:white;'>
+                        <h2>Maternal Health Screening</h2>
+                    </div>
+                    <div class='d-flex flex-wrap justify-content-evenly'>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_pregnant_women_receiving_anc;?></h2>
+                            <strong>No. of Pregnant women</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_anc_visits;?></h2>
+                            <strong>No. of ANC visits</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_births_attended_by_skilled_health_personnel;?></h2>
+                            <strong>No. of Births attended by Health Personnel</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_maternal_deaths;?></h2>
+                            <strong>No. of Maternal Deaths</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_women_using_modern_contraceptive_methods;?></h2>
+                            <strong>No. of Women using modern contraceptives</strong>
+                        </div>
+                    </div>
+                    <!-- Maternal Health Pie Chart -->
+                    <div class="p-3">
+                        <canvas id="maternalHealthPieChart"></canvas>
+                    </div>
+                </div>
+                <div class='border'>
+                    <div style='background-color: #245501;color:white;'>
+                        <h2>Road Safety Screening</h2>
+                    </div>
+                    <div class='d-flex flex-wrap justify-content-evenly'>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_road_traffic_crashes;?></h2>
+                            <strong>No. of Road traffic crashes</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_fatalities_due_to_road_traffic_crashes;?></h2>
+                            <strong>No. of Fatalities due to road traffic crashes</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_motorcycle_riders_wearing_helmets;?></h2>
+                            <strong>No. of Motorcycle riders wearing helments</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_vehicle_occupants_wearing_seatbelts;?></h2>
+                            <strong>No. of Vehicle occupants wearing seatbelts</strong>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center align-items-center w-25'>
+                            <h2><?php echo $total_no_of_people_educated_on_road_safety;?></h2>
+                            <strong>No. of People educated on road safety</strong>
+                        </div>
+                    </div>
+                    <!-- Maternal Health Pie Chart -->
+                    <div class="p-3">
+                        <canvas id="roadSafetyChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
+    <!-- Chart.js Script -->
+    <script>
+        // TB Data
+        const tbData = {
+            labels: [
+                "ACF/ECF Activities",
+                "Presumptive Cases",
+                "Diagnosed Cases",
+                "Close Contacts",
+                "Eligible Contacts w/ TPT"
+            ],
+            datasets: [{
+                data: [
+                    <?php echo $total_no_of_acf_ecf_activities_conducted; ?>,
+                    <?php echo $total_no_of_presumptive_tb_cases_assessed; ?>,
+                    <?php echo $total_no_of_diagnosed_tb_cases_enrolled_to_care; ?>,
+                    <?php echo $total_no_of_close_contacts_identified; ?>,
+                    <?php echo $total_no_of_eligible_contacts_provided_with_tpt; ?>
+                ],
+                backgroundColor: ["#1abc9c","#3498db","#9b59b6","#f39c12","#e74c3c"]
+            }]
+        };
+        new Chart(document.getElementById("tbPieChart"), {
+            type: "bar",
+            data: tbData
+        });
+
+        // HIV Data
+        const hivData = {
+            labels: [
+                "Individuals Reached",
+                "Individuals Screened",
+                "Referred for Testing"
+            ],
+            datasets: [{
+                label: "HIV Screening",
+                data: [
+                    <?php echo $total_no_of_individuals_reached; ?>,
+                    <?php echo $total_no_of_individuals_screened; ?>,
+                    <?php echo $total_no_of_individuals_referred_for_hiv_testing; ?>
+                ],
+                backgroundColor: ["#2ecc71","#e67e22","#e74c3c"]
+            }]
+        };
+        new Chart(document.getElementById("hivBarChart"), {
+            type: "bar",
+            data: hivData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+         // Maternal Data
+        const maternalData = {
+            labels: [
+                "Women receving ANC",
+                "ANC Visits",
+                "Birth Skilled Personnel",
+                "Maternal Deaths",
+                "Women using modern Contraceptives"
+            ],
+            datasets: [{
+                data: [
+                    <?php echo $total_no_of_pregnant_women_receiving_anc; ?>,
+                    <?php echo $total_no_of_anc_visits; ?>,
+                    <?php echo $total_no_of_births_attended_by_skilled_health_personnel; ?>,
+                    <?php echo $total_no_of_maternal_deaths; ?>,
+                    <?php echo $total_no_of_women_using_modern_contraceptive_methods; ?>
+                ],
+                backgroundColor: ["#1abc9c","#3498db","#9b59b6","#f39c12","#e74c3c"]
+            }]
+        };
+        new Chart(document.getElementById("maternalHealthPieChart"), {
+            type: "bar",
+            data: maternalData
+        });
+        // Road Safety Data
+        const roadSafetyData = {
+            labels: [
+                "Road traffic crashes",
+                "Fatalities due to road traffic crashes",
+                "Motorcycle riders wearing helments",
+                "Vehicle occupants wearing seatbelts",
+                "Women using modern Contraceptives"
+            ],
+            datasets: [{
+                data: [
+                    <?php echo $total_no_of_pregnant_women_receiving_anc; ?>,
+                    <?php echo $total_no_of_anc_visits; ?>,
+                    <?php echo $total_no_of_births_attended_by_skilled_health_personnel; ?>,
+                    <?php echo $total_no_of_maternal_deaths; ?>,
+                    <?php echo $total_no_of_women_using_modern_contraceptive_methods; ?>
+                ],
+                backgroundColor: ["#1abc9c","#3498db","#9b59b6","#f39c12","#e74c3c"]
+            }]
+        };
+        new Chart(document.getElementById("roadSafetyChart"), {
+            type: "bar",
+            data: roadSafetyData
+        });
+    </script>
+</body>
 </html>
